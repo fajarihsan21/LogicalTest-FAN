@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+)
 
 func main() {
 	// Nomor 1
@@ -16,6 +19,7 @@ func main() {
 
 	// Nomor 2
 	fmt.Println("Nomor 2:")
+	fmt.Println(countWords("Kemarin Shopia per[gi ke mall"))
 
 }
 
@@ -33,4 +37,11 @@ func socks(ar []int) int {
     }
     
     return dup      
+}
+
+func countWords(s string) int {
+	re := regexp.MustCompile(`[^a-zA-Z0-9\S]+`)
+    
+    results := re.FindAllString(s, -1)
+    return len(results)
 }
